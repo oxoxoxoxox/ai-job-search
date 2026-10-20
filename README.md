@@ -61,7 +61,7 @@ The framework encodes career guidance best practices, including structured evalu
 
 ## Prerequisites
 
-- [Claude Code](https://claude.com/claude-code) (CLI). Claude Code has no free tier: you need a Claude Pro/Max/Team subscription or Anthropic API credits (pay-per-token, usually cheaper for occasional use). Using a different agent tool (Codex, Antigravity, Gemini CLI)? Start at [`AGENTS.md`](AGENTS.md) - the portal search skills work there out of the box, and [community forks](https://github.com/MadsLorentzen/ai-job-search/discussions/78) adapt the full workflow.
+- An agent runtime: [Claude Code](https://claude.com/claude-code), or Codex with repository skills enabled. Codex reads [`AGENTS.md`](AGENTS.md), discovers the shared skill at `.agents/skills/ai-job-search-workflow/`, and keeps `.claude/` as the workflow source of truth.
 - Python 3.10+
 - [Bun](https://bun.sh) (for job search CLI tools)
 - LaTeX distribution with `lualatex` and `xelatex`: [TeX Live](https://tug.org/texlive/), [MacTeX](https://tug.org/mactex/), [TinyTeX](https://yihui.org/tinytex/), or [MiKTeX](https://miktex.org/). The CV compiles with `lualatex` (pdflatex often fails on modern MiKTeX installs with `fontawesome5` font-expansion errors); the cover letter compiles with `xelatex` because `cover.cls` requires `fontspec`. If using a minimal TeX install such as TinyTeX or BasicTeX, install the extra packages listed in [SETUP.md](SETUP.md#minimal-tex-install-tinytexbasictex).
@@ -99,10 +99,18 @@ For `linkedin-search` and `freehire-search` the install is optional: both have z
 
 ### 3. Set up your profile
 
+With Claude Code:
+
 ```bash
 claude
 # Then inside Claude Code:
 /setup
+```
+
+With Codex, open this repository, start a new session so repository skills are discovered, then select `ai-job-search-workflow` from `/skills` or ask:
+
+```text
+Use $ai-job-search-workflow to set up my profile. Defer automatic job-search configuration for now.
 ```
 
 `/setup` offers three paths: read your `documents/` folder if you have one populated (CV PDF, LinkedIn export, diplomas, reference letters, past applications), import a single CV pasted in chat, or walk through an interview. It auto-detects what you have and asks. Documents-folder mode is idempotent and safe to re-run as you add more material; see `documents/README.md` for the layout.
@@ -125,6 +133,12 @@ If the URL can't be fetched (some job portals block automated access), you can p
 
 ```bash
 /apply <paste the full job description here>
+```
+
+In Codex, the safest first smoke test is evaluation-only. Paste the full posting and ask:
+
+```text
+Use $ai-job-search-workflow to evaluate this posting only. Do not draft documents or update the tracker/archive.
 ```
 
 This runs the full workflow: evaluate fit, draft CV + cover letter, review with a second agent, revise, and present the final output. The posting passes a deterministic integrity gate first (hidden text, invisible characters, instruction-shaped lines, hidden links), and its one-line verdict opens the evaluation; the agents that fetch and review read-only.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Job Search Workflow"
+  short_description: "Run the repository job-application workflows in Codex"
+  default_prompt: "Use $ai-job-search-workflow to set up my profile or evaluate a pasted job posting."

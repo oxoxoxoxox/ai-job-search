@@ -33,6 +33,8 @@ Every grant the template ships, where it lives, how long it lasts, and what chec
 | Portal CLI manifests (`.agents/**/package.json`) | No lifecycle scripts (`preinstall`, `postinstall`, ...) and no `trustedDependencies`, so `bun install` runs no code | - | Fails CI; `tools/install_portal_clis.py` also skips a manifest that carries one |
 | The browser-header retry (`tools/fetch_page.py`) | A GET with a fixed argv, http(s) only, 45 s / 5 redirects / 10 MB, `robots.txt` enforced with no bypass flag, output refused inside the repo | - | Pinned by `tests/test_fetch_page.py`; the grant names the script, not `curl` |
 
+**Codex runtime note:** `.claude/settings.json`, Claude skill `allowed-tools`, and the `tools:` fields in `.claude/agents/*.md` do not enforce Codex permissions. The Codex adapter preserves those scopes as instructions, but Codex subagents inherit the parent session's sandbox and approval mode. Choose an appropriate Codex permission mode before running the workflow, and treat a role described as read-only as a behavioral constraint rather than an isolated read-only sandbox.
+
 ### What this does not do
 
 - **It is not a sandbox.** Claude Code's Bash sandbox does not run on native Windows at all, and on macOS and Linux it is off by default. If you are on macOS or Linux, turning it on in your user settings is the single strongest addition you can make; nothing in this repo conflicts with it.

@@ -14,6 +14,18 @@ npm install -g @anthropic-ai/claude-code
 
 You'll need an Anthropic API key or a Claude Pro/Team subscription. See the [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code) for details.
 
+### Codex alternative
+
+Claude Code is not required when you run the repository with Codex. Open the repository as the Codex workspace and start a new session (`Set-Location <repo>; codex` in PowerShell). Codex reads `AGENTS.md`, discovers `.agents/skills/ai-job-search-workflow/`, and can delegate review phases to Codex subagents that load the canonical role definitions under `.claude/agents/`.
+
+In Codex CLI, use `/skills` to select `ai-job-search-workflow`, or mention it explicitly:
+
+```text
+Use $ai-job-search-workflow to set up my profile. Defer automatic job-search configuration for now.
+```
+
+The `.claude/` directory remains the canonical workflow and profile source. The Codex skill translates its tool and subagent names at runtime rather than maintaining a second copy.
+
 ### Python
 
 Python 3.10+ is required for the salary lookup tool. Check with:
@@ -216,7 +228,15 @@ Then run the onboarding:
 /setup
 ```
 
-Claude will offer three paths:
+In Codex, request the same workflow with the repository skill:
+
+```text
+Use $ai-job-search-workflow to set up my profile. Defer automatic job-search configuration for now.
+```
+
+When automatic search is deferred, Codex prepares an evaluation-ready profile first and leaves portal/search-query configuration for a later setup pass.
+
+The setup workflow will offer three paths:
 
 - **Path A (documents folder):** Add your CV, LinkedIn export, diplomas, references, or past applications under `documents/`. Claude reads and cross-references them before proposing profile updates. This is best when you have several source files.
 - **Path B (single CV import):** Share one CV/resume by mentioning the file with `@` or pasting the text. Claude extracts it and asks follow-up questions for anything missing.
@@ -276,7 +296,17 @@ Or paste the job description directly:
 /apply [paste job posting text here]
 ```
 
-Claude will:
+For a first Codex test, evaluate without drafting or recording an application:
+
+```text
+Use $ai-job-search-workflow to evaluate this posting only. Do not draft a CV or cover letter, and do not update the tracker or application archive.
+
+[paste the full job posting here]
+```
+
+Codex runs the posting integrity gate and the canonical fit framework, then stops after the recommendation. Once the profile and evaluation look right, ask it to continue with the full application workflow.
+
+The full application workflow will:
 1. Evaluate the fit against your profile
 2. Ask if you want to proceed
 3. Draft a tailored CV and cover letter

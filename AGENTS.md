@@ -1,5 +1,5 @@
 ---
-framework_version: 1.0.0
+framework_version: 1.0.1
 ---
 
 # Agent Guidelines: AI Job Search
@@ -17,3 +17,6 @@ To prevent duplication and configuration drift across different AI agent framewo
    - Do not duplicate these rules or specifications. Treat `.claude/` files as the single source of truth.
 3. **Portal Search Skills:**
    - Job-portal search CLIs live under [.agents/skills/](.agents/skills/) in the portable Agent Skills format (with a `SKILL.md` per portal). Codex and Antigravity discover these automatically; the `/scrape` workflow in [.claude/skills/job-scraper/](.claude/skills/job-scraper/) orchestrates them.
+4. **Codex Workflow Adapter:**
+   - Codex should use [.agents/skills/ai-job-search-workflow/SKILL.md](.agents/skills/ai-job-search-workflow/SKILL.md) for profile setup, fit evaluation, applications, ranking, and the other repository workflows.
+   - The adapter translates Claude-specific tool and subagent names at runtime and points back to the canonical `.claude/` files. Do not duplicate or fork the workflow logic into Codex-only files.
