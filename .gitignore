@@ -53,6 +53,9 @@ Thumbs.db
 .claude/projects/
 .claude/settings.local.json
 
+# Shared local working memory (may contain personal job-search context)
+/memory/
+
 # Skills lock (auto-generated)
 skills-lock.json
 

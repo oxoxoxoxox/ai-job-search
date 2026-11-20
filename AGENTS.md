@@ -20,3 +20,7 @@ To prevent duplication and configuration drift across different AI agent framewo
 4. **Codex Workflow Adapter:**
    - Codex should use [.agents/skills/ai-job-search-workflow/SKILL.md](.agents/skills/ai-job-search-workflow/SKILL.md) for profile setup, fit evaluation, applications, ranking, and the other repository workflows.
    - The adapter translates Claude-specific tool and subagent names at runtime and points back to the canonical `.claude/` files. Do not duplicate or fork the workflow logic into Codex-only files.
+
+## Shared Working Memory
+
+Read and follow [.claude/memory-workflow.md](.claude/memory-workflow.md) for session handoffs and durable decisions. Start with `memory/index.md` when present. Keep candidate profiles and workflow specifications in their canonical locations above; memory notes only reference them.

@@ -4,6 +4,9 @@
 <!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
 
 ## Role
+
+For shared working memory, session handoffs, and durable decisions, read and follow [.claude/memory-workflow.md](.claude/memory-workflow.md). Start with `memory/index.md` when present. Candidate profiles and workflow specifications remain the source of truth; memory does not replace them.
+
 This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
