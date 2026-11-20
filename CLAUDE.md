@@ -5,6 +5,8 @@
 
 ## Role
 
+For Korean document drafting and proofreading, follow [.claude/korean-writing.md](.claude/korean-writing.md) and select the relevant Korean skills under `.agents/skills/`.
+
 For shared working memory, session handoffs, and durable decisions, read and follow [.claude/memory-workflow.md](.claude/memory-workflow.md). Start with `memory/index.md` when present. Candidate profiles and workflow specifications remain the source of truth; memory does not replace them.
 
 This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:

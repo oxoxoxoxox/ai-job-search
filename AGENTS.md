@@ -24,3 +24,7 @@ To prevent duplication and configuration drift across different AI agent framewo
 ## Shared Working Memory
 
 Read and follow [.claude/memory-workflow.md](.claude/memory-workflow.md) for session handoffs and durable decisions. Start with `memory/index.md` when present. Keep candidate profiles and workflow specifications in their canonical locations above; memory notes only reference them.
+
+## Korean Writing Skills
+
+For Korean document drafting, proofreading, and style review, read [.claude/korean-writing.md](.claude/korean-writing.md). The installed `humanizer`, `grammar-checker`, and `style-guide` skills are in `.agents/skills/`. Preserve factual grounding and the canonical application workflow.
