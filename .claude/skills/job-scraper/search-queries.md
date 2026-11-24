@@ -1,6 +1,6 @@
 # Search Queries for Job Scraper
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
+Search scope: entry-level, junior, and internship software roles in South Korea. Prioritize backend development with Java and Spring Boot.
 
 ## Installed portal CLIs (primary for `/scrape`)
 
@@ -12,14 +12,20 @@ The `site:` query templates in this file are the **WebSearch fallback** — for 
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+Korean public sources (WebSearch):
+- [점핏](https://jumpit.saramin.co.kr/positions?jobCategory=1&sort=popular) and [원티드](https://www.wanted.co.kr/) for developer roles.
+- [사람인](https://www.saramin.co.kr/zf_user/), [잡코리아](https://www.jobkorea.co.kr/), and [인크루트](https://job.incruit.com/) for regular hiring and entry-level recruitment.
+- [링커리어](https://linkareer.com/) for internships and graduate recruitment. Keep individual job postings from the results.
 
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+Additional public sources:
+- LinkedIn Jobs and Freehire through their enabled portal CLIs. For LinkedIn, use South Korea as the location.
+- Public employer careers pages for known target companies.
+- [당근 채용](https://careers.daangn.com/jobs/) through public web search; the Career Ops scanner did not recognize this board in the comparison run.
+
+Manual source:
+- [SSAFY 채용관](https://recruiting.ssafy.com/login.php?ref_url=/) requires sign-in. Use a posting URL or text supplied by the user; leave this source out of automatic web searches.
+
+For public web searches, open the individual posting and confirm the role, experience requirements, location, and closing date before keeping it. If the public details are unavailable, use the employer's public posting or flag the result for manual review.
 
 ## Query Categories
 
@@ -27,54 +33,49 @@ Queries are grouped by priority. Write **each category in every language from yo
 
 **Organize by function, not job title.** The same underlying work carries different titles across companies and markets (a "Data Scientist" role at one employer may be posted as "Insights Analyst" or "Data Consultant" at another). Name each priority category after the function it covers, and list several plausible job titles as query variants within that category rather than betting an entire priority tier on one exact title string.
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
+### Priority 1: Junior backend and server development
 
-These match your strongest and most desired career direction.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE_1]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE_2]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE_1]" [YOUR_COUNTRY]
-```
-
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
-
-These match your domain expertise.
+Look for backend and server development roles open to junior candidates and new graduates.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
+site:jumpit.saramin.co.kr/position/ (백엔드 OR 서버개발) (신입 OR 주니어 OR 경력무관)
+site:wanted.co.kr/wd/ (백엔드 OR 서버) (신입 OR 주니어 OR "경력 1년")
+site:careers.daangn.com (백엔드 OR backend) (신입 OR 인턴 OR 채용전환형)
+site:linkedin.com/jobs "backend engineer" (junior OR "new grad" OR intern) ("South Korea" OR Seoul OR Busan)
 ```
 
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
+### Priority 2: Java and Spring backend
 
-Adjacent roles you could pivot into.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
-```
-
-### Priority 4: Broader Technical / Consulting
-
-Wider net for general technical roles.
+Look for Java, Spring, and Spring Boot roles that accept early-career candidates.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+site:saramin.co.kr/zf_user/jobs (Java OR Spring) (백엔드 OR 서버) (신입 OR 경력무관)
+site:jobkorea.co.kr/Recruit/GI_Read (Java OR Spring) (백엔드 OR 서버) (신입 OR 경력무관)
+site:job.incruit.com (Java OR Spring) (백엔드 OR 서버개발) (신입 OR 경력무관)
+```
+
+### Priority 3: Backend internships and graduate hiring
+
+Look for development internships, conversion-track internships, and graduate hiring with a software or backend role.
+
+```
+site:linkareer.com/activity/ (백엔드 OR 서버개발 OR 소프트웨어) (인턴 OR 채용연계형 OR 신입)
+site:jumpit.saramin.co.kr/position/ (백엔드 OR 서버) (인턴 OR 채용전환형)
+site:linkedin.com/jobs "software engineer intern" (backend OR server) ("South Korea" OR Seoul OR Busan)
+```
+
+### Priority 4: Adjacent software development
+
+Use for a broader search. Keep roles where the posting describes backend responsibilities such as API or database work.
+
+```
+site:wanted.co.kr/wd/ (웹개발 OR 풀스택) (Java OR Spring) (신입 OR 주니어)
+site:jobkorea.co.kr/Recruit/GI_Read ("웹 개발" OR "소프트웨어 개발") (API OR Spring) (신입 OR 경력무관)
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+Search nationwide in South Korea until the user sets a narrower area. Report the listed work location and any stated remote or hybrid arrangement. Check commute or relocation constraints against confirmed preferences before assessing location fit.
 
 ## Language Filter
 

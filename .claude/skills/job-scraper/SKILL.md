@@ -36,6 +36,17 @@ Optional arguments:
 
 ## Execution Steps
 
+### Daily Job Search
+
+For an ordinary request to find or recommend jobs (including “공고 찾아줘”, “오늘 공고 찾아줘”, and “오늘 공고 추천해줘”), run both the main search and the Career Ops supplement below. Run when asked. A named source, a health check, or a request for a different scope overrides this default; for example, “링크드인만” searches LinkedIn only.
+
+1. Run the existing search steps using [search-queries.md](search-queries.md). Prioritize Korean junior Java/Spring backend roles and internships. Search the configured public Korean sites even when a portal CLI works. Use the LinkedIn web search fallback if Bun is unavailable. SSAFY remains a manual, login-only source. Apply any location, experience, or role constraints in the current request.
+2. Run the Career Ops official employer-board scanner using [the local setup and run instructions](career-ops.md). Use it for discovery only. Merge its individual posting URLs into the same pool before checking details and scoring. If it cannot run or a source fails, report that limitation and finish the main search. Record Career Ops entries with `portal: career-ops` and `source: cli` in the existing seen state.
+3. Merge duplicates across both tools using the posting ID or normalized URL, then the employer, role, team, and location when the same opening has different URLs. Prefer the employer's direct posting. Keep genuinely different teams or openings separate. Check the listing's current status, deadline, work location, and required experience on the posting. Exclude closed listings and clear senior-only mismatches. When a key condition such as graduation date, language level, or work location is unknown, label it as a condition to confirm. Never infer an eligibility fact from a placeholder.
+4. Give a Korean shortlist of **5–10 verified recommendations when available**, sorted by fit. Start with **오늘의 1순위** and say why it fits, using actual evidence from the candidate materials (for example, Open Closet's backend work when relevant). For each result show company, title, location, deadline or “미공개”, direct link, source, and one short fit or eligibility note. Keep the 1순위 and shortlist in the same report. If fewer than five are verified, report the actual number; when none are suitable, say so. Identify material search failures and stale or unknown dates. Do not mark search results as applications or run Career Ops evaluation or CV generation.
+
+For the daily shortlist, the presentation above takes precedence over the generic presentation in Step 5. Use `job_scraper/seen_jobs.json` and `job_search_tracker.csv` at the repository root for cross-run deduplication.
+
 ### Step 0: Load State
 
 1. Read `job_scraper/seen_jobs.json` (create if missing - start with `{"seen": {}}`)

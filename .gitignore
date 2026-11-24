@@ -56,6 +56,9 @@ Thumbs.db
 # Shared local working memory (may contain personal job-search context)
 /memory/
 
+# Local Career Ops checkout and dependencies
+/.career-ops-local/
+
 # Skills lock (auto-generated)
 skills-lock.json
 

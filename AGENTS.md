@@ -20,6 +20,7 @@ To prevent duplication and configuration drift across different AI agent framewo
 4. **Codex Workflow Adapter:**
    - Codex should use [.agents/skills/ai-job-search-workflow/SKILL.md](.agents/skills/ai-job-search-workflow/SKILL.md) for profile setup, fit evaluation, applications, ranking, and the other repository workflows.
    - The adapter translates Claude-specific tool and subagent names at runtime and points back to the canonical `.claude/` files. Do not duplicate or fork the workflow logic into Codex-only files.
+   - For a general request such as “공고 찾아줘” or “오늘 공고 추천해줘”, use the [daily job search](.claude/skills/job-scraper/SKILL.md#daily-job-search) workflow in this workspace. Respect an explicitly requested source or narrower scope.
 
 ## Shared Working Memory
 

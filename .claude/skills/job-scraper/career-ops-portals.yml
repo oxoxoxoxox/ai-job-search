@@ -1,0 +1,20 @@
+tracked_companies:
+  - name: Moloco
+    careers_url: https://job-boards.greenhouse.io/moloco
+  - name: delight.ai
+    careers_url: https://job-boards.greenhouse.io/get-delight
+  - name: Sendbird
+    careers_url: https://job-boards.greenhouse.io/sendbird
+  - name: Coupang
+    careers_url: https://job-boards.greenhouse.io/coupang
+  - name: Palantir
+    careers_url: https://jobs.lever.co/palantir
+
+location_filter:
+  strict: true
+  remote_title_fallback: false
+  allow: [South Korea, Korea, Seoul, Pangyo, Seongnam, Gyeonggi, Busan, Incheon, Daejeon, Daegu, Gwangju, Ulsan, Jeju, 대한민국, 한국, 서울, 판교, 성남, 경기, 부산, 인천, 대전, 대구, 광주, 울산, 제주]
+
+title_filter:
+  positive: [backend, back-end, back end, software engineer, server engineer, 백엔드, 서버 개발, 서버개발, 소프트웨어 엔지니어]
+  negative: ["word:staff", "word:senior", "word:principal", "word:director", "word:manager", 시니어]
