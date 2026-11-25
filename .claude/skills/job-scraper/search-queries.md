@@ -16,6 +16,7 @@ Korean public sources (WebSearch):
 - [점핏](https://jumpit.saramin.co.kr/positions?jobCategory=1&sort=popular) and [원티드](https://www.wanted.co.kr/) for developer roles.
 - [사람인](https://www.saramin.co.kr/zf_user/), [잡코리아](https://www.jobkorea.co.kr/), and [인크루트](https://job.incruit.com/) for regular hiring and entry-level recruitment.
 - [링커리어](https://linkareer.com/) for internships and graduate recruitment. Keep individual job postings from the results.
+- [직행](https://zighang.com/recruitment) for developer roles and internships. If it mirrors another posting, verify the original listing and use that URL for deduplication.
 
 Additional public sources:
 - LinkedIn Jobs and Freehire through their enabled portal CLIs. For LinkedIn, use South Korea as the location.
@@ -40,6 +41,7 @@ Look for backend and server development roles open to junior candidates and new 
 ```
 site:jumpit.saramin.co.kr/position/ (백엔드 OR 서버개발) (신입 OR 주니어 OR 경력무관)
 site:wanted.co.kr/wd/ (백엔드 OR 서버) (신입 OR 주니어 OR "경력 1년")
+site:zighang.com/recruitment/ (백엔드 OR 서버개발) (신입 OR 주니어 OR 경력무관 OR 인턴) (Java OR Spring)
 site:careers.daangn.com (백엔드 OR backend) (신입 OR 인턴 OR 채용전환형)
 site:linkedin.com/jobs "backend engineer" (junior OR "new grad" OR intern) ("South Korea" OR Seoul OR Busan)
 ```
