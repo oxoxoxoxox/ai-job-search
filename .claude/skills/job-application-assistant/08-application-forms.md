@@ -8,6 +8,8 @@ framework_version: 1.0.0
 
 This file governs that third artifact. It is not a document you compile; it is text the candidate pastes.
 
+For an optional free-form Korean self-introduction with no employer-defined questions, use the candidate's [Korean writing guide](../../../My_MD_File/portfolio/자소서_작성_가이드.md#중소기업스타트업-자유양식-자기소개서) when it is present. Keep the employer's actual submission format and limits.
+
 ## When this applies
 
 Trigger it whenever a posting or portal asks for any of:
